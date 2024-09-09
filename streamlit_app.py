@@ -9,10 +9,10 @@ def send_request(url, to_server):
     response = requests.post(url, json=to_server)
     if response.status_code == 200:
       st.write(f"{response.json()}")
-  else:
-    st.write(
-    f"Нет ответа от FastAPI сервера ({url}). Код статуса: {response.status_code}"
-            )
+    else:
+      st.write(
+      f"Нет ответа от FastAPI сервера ({url}). Код статуса: {response.status_code}"
+              )
   except Exception as e:
     st.write(f"Произошла ошибка: {e}")
 
