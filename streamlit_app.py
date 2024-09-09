@@ -17,7 +17,7 @@ def send_request(url, to_server):
   except Exception as e:
     st.write(f"Произошла ошибка: {e}")
 
-st.text("Техническая поддержка X5", divider="green")
+st.text("Техническая поддержка X5")
 
 # Вводное сообщение от чатбота
 if "messages" not in st.session_state:
