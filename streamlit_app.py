@@ -34,7 +34,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
 
   with st.chat_message("user"):
     st.markdown(message.content)
-    to_server = {"server_query": "zatychka"}
+    to_server = {"server_query": "zatychka",}
 
   message = ChatMessage(role="assistant", content="pass")
   st.session_state["messages"].append(message)
