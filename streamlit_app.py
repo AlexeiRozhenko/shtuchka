@@ -2,7 +2,7 @@ import streamlit as st
 from langchain.schema import ChatMessage
 
 to_server = {
-        "server_query": prompt,
+        "server_query": "zatychka",
     }
 
 if "messages" not in st.session_state:
