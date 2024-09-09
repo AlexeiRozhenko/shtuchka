@@ -4,6 +4,19 @@ from langchain.schema import ChatMessage
 to_server = {
         "server_query": "zatychka",
     }
+# Получение ответа от сервера
+def send_request(url, payload):
+    """Send request to FastAPI server"""
+    try:
+        response = requests.post(url, json=payload)
+        if response.status_code == 200:
+            st.write(f"{response.json()}")
+        else:
+            st.write(
+                f"Нет ответа от FastAPI сервера ({url}). Код статуса: {response.status_code}"
+            )
+    except Exception as e:
+        st.write(f"Произошла ошибка: {e}")
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
