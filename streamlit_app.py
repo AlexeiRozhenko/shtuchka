@@ -33,8 +33,8 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   st.session_state["messages"].append(message)
 
   with st.chat_message("user"):
+    data = {"server_query": message.content}
     st.markdown(message.content)
-    to_server = {"server_query": "zatychka",}
 
   message = ChatMessage(role="assistant", content="pass")
   st.session_state["messages"].append(message)
@@ -42,6 +42,6 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
 # Генерация ответа ассистента и получение ответа с FastAPI сервера
 with st.chat_message("assistant"):
   with st.spinner("Обрабатываю ваш запрос..."):
-    server_answer = send_request(address, to_server)
+    server_answer = send_request(address, data)
     message_placeholder = st.empty()
     message_placeholder.markdown(f"Вот что я нашел по вашему запросу:\n{server_answer}")
