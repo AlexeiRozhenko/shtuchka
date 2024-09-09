@@ -46,4 +46,4 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
       # server_answer = send_request(address, data)
       server_answer = "pass"
       message_placeholder = st.empty()
-      message_placeholder.markdown(f"Вот что я нашел по вашему запросу:\n{server_answer}")
+      message_placeholder.markdown(f"Вот что я нашел по вашему запросу:\n{prompt}")
