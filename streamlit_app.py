@@ -10,12 +10,12 @@ for message in st.session_state["messages"][1::1]:
     with st.chat_message(message.role):
         st.markdown(message.content)
 
-if prompt := st.chat_input("Напишите ваш вопрос"):
-    message = ChatMessage(role="user", content=prompt)
-    st.session_state["messages"].append(message)
+# if prompt := st.chat_input("Напишите ваш вопрос"):
+#     message = ChatMessage(role="user", content=prompt)
+#     st.session_state["messages"].append(message)
 
-    with st.chat_message("user"):
-        st.markdown(message.content)
+#     with st.chat_message("user"):
+#         st.markdown(message.content)
 
-    message = ChatMessage(role="assistant", content="")
-    st.session_state["messages"].append(message)
+#     message = ChatMessage(role="assistant", content="")
+#     st.session_state["messages"].append(message)
