@@ -28,7 +28,7 @@ if "messages" not in st.session_state:
 # Выведение истории чата 
 for message in st.session_state.messages:
   with st.chat_message(message.role):
-    st.markdown(message.content)
+    st.text(message.content)
 
 # Инициализация окна ввода информации для пользователя
 if prompt := st.chat_input("Напишите ваш вопрос"):
@@ -36,7 +36,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   st.session_state["messages"].append(message)
 
   with st.chat_message("user"):
-    st.markdown(message.content)
+    st.text(message.content)
 
   message = ChatMessage(role="assistant", content="pass")
   st.session_state["messages"].append(message)
@@ -48,4 +48,4 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
       # server_answer = send_request(address, data)
       server_answer = "pass"
       message_placeholder = st.empty()
-      message_placeholder.markdown(f"Вот что я нашел по вашему запросу:\n{prompt}")
+      message_placeholder.text(f"Вот что я нашел по вашему запросу:\n{prompt}")
