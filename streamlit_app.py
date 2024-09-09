@@ -17,7 +17,7 @@ def send_request(url, to_server):
   except Exception as e:
     st.write(f"Произошла ошибка: {e}")
 
-st.subheader("Техническая поддержка X5", divider="green)
+st.subheader("Техническая поддержка X5", divider="green")
 
 # Вводное сообщение от чатбота
 if "messages" not in st.session_state:
@@ -35,7 +35,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   message = ChatMessage(role="user", content=prompt)
   st.session_state["messages"].append(message)
 
-  with st.chat_message("user"):
+  with st.chat_message("user", avatar="🦖"):
     st.text(message.content)
 
   message = ChatMessage(role="assistant", content="pass")
