@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 from langchain.schema import ChatMessage
 
-address = "pass"
+address = "http://95.182.121.46:8080/query?query=%D0%9A%D0%B0%D0%BA%20%D1%82%D0%B2%D0%BE%D0%B8%20%D0%B4%D0%B5%D0%BB%D0%B0"
 
 # Отправление запроса на FastAPI сервер
 def send_request(url, to_server):
@@ -45,7 +45,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   with st.chat_message("assistant", avatar="🖥️"):
     with st.spinner("Обрабатываю ваш запрос..."):
       data = {"server_query": message.content}
-      # server_answer = send_request(address, data)
-      server_answer = "pass"
+      server_answer = send_request(address, data)
+      # server_answer = "pass"
       message_placeholder = st.empty()
       message_placeholder.text(f"Вот что я нашел по вашему запросу:\n{prompt}")
