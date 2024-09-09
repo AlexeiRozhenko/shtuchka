@@ -19,3 +19,9 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
 
     message = ChatMessage(role="assistant", content="")
     st.session_state["messages"].append(message)
+
+    with st.chat_message("assistant"):
+        with st.spinner("Обрабатываю ваш запрос..."):
+            message_placeholder = st.empty()
+                message_placeholder.markdown("Няняня")
+            message_placeholder.markdown(message.content)
