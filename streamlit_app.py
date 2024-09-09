@@ -1,4 +1,5 @@
 import streamlit as st
+from langchain.schema import ChatMessage
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
