@@ -9,7 +9,7 @@ def send_request(url, to_server):
   try:
     response = requests.get(url, json=to_server)
     if response.status_code == 200:
-      st.write(f"{response.json()}")
+      return response
     else:
       st.write(
       f"Нет ответа от FastAPI сервера ({url}). Код статуса: {response.status_code}"
@@ -47,4 +47,4 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
       server_answer = send_request(address, data)
       # server_answer = "pass"
       message_placeholder = st.empty()
-      message_placeholder.text(f"Вот что я нашел по вашему запросу:\n{prompt}")
+      message_placeholder.text(f"Вот что я нашел по вашему запросу:\n{server_answer}")
