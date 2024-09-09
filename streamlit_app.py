@@ -35,7 +35,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   message = ChatMessage(role="user", content=prompt)
   st.session_state["messages"].append(message)
 
-  with st.chat_message("user", avatar="🦖"):
+  with st.chat_message("user"):
     st.text(message.content)
 
   message = ChatMessage(role="assistant", content="pass")
