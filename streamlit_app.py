@@ -6,7 +6,7 @@ if "messages" not in st.session_state:
         ChatMessage(role="assistant", content="Привет! Я X6, ваш личный ассистент, который знает (почти) все-все о внутрикорпоративных тонкостях. Подскажите, чем я могу быть полезен?")
     ]
 
-for message in st.session_state["messages"][1::1]:
+for message in st.session_state.messages:
     with st.chat_message(message.role):
         st.markdown(message.content)
 
