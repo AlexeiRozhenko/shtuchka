@@ -16,3 +16,6 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
 
     with st.chat_message("user"):
         st.markdown(message.content)
+
+    message = ChatMessage(role="assistant", content="")
+    st.session_state["messages"].append(message)
