@@ -7,7 +7,7 @@ address = "http://95.182.121.46:8080/query?query=%D0%9A%D0%B0%D0%BA%20%D1%82%D0%
 # Отправление запроса на FastAPI сервер
 def send_request(url, to_server):
   try:
-    response = requests.post(url, json=to_server)
+    response = requests.get(url, json=to_server)
     if response.status_code == 200:
       st.write(f"{response.json()}")
     else:
