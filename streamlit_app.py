@@ -1,6 +1,10 @@
 import streamlit as st
 from langchain.schema import ChatMessage
 
+to_server = {
+        "server_query": prompt,
+    }
+
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
         ChatMessage(role="assistant", content="Привет!✌️ Я X6, ваш личный ассистент, который знает (почти) все о внутрикорпоративных тонкостях. Подскажите, чем я могу быть полезен?")
@@ -17,7 +21,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
     with st.chat_message("user"):
         st.markdown(message.content)
 
-    message = ChatMessage(role="assistant", content="")
+    message = ChatMessage(role="assistant", content="zatychka")
     st.session_state["messages"].append(message)
 
     with st.chat_message("assistant"):
