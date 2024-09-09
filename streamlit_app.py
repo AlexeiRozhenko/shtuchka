@@ -12,4 +12,7 @@ for message in st.session_state["messages"][1::1]:
 
 if prompt := st.chat_input("Напишите ваш вопрос"):
     message = ChatMessage(role="user", content=prompt)
-    # st.session_state["messages"].append(message)
+    st.session_state["messages"].append(message)
+
+    with st.chat_message("user"):
+        st.markdown(message.content)
