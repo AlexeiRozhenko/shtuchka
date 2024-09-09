@@ -18,6 +18,7 @@ def send_request(url, to_server):
     st.write(f"Произошла ошибка: {e}")
 
 st.text("Техническая поддержка X5")
+st.divider()
 
 # Вводное сообщение от чатбота
 if "messages" not in st.session_state:
