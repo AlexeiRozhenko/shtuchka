@@ -3,7 +3,7 @@ from langchain.schema import ChatMessage
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        ChatMessage(role="assistant", content="Привет! Я X6, ваш личный ассистент, который знает (почти) все-все о внутрикорпоративных тонкостях. Подскажите, чем я могу быть полезен?")
+        ChatMessage(role="assistant", content="Привет!✌️ Я X6, ваш личный ассистент, который знает (почти) все о внутрикорпоративных тонкостях. Подскажите, чем я могу быть полезен?")
     ]
 
 for message in st.session_state.messages:
