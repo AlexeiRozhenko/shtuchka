@@ -25,8 +25,9 @@ if "messages" not in st.session_state:
 
 # Выведение истории чата 
 for message in st.session_state.messages:
-  with st.chat_message(message.role):
-    st.text(message.content)
+  if message.role == "assistant":
+    with st.chat_message(message.role, avatar="🖥️"):
+      st.text(message.content)
 
 # Инициализация окна ввода информации для пользователя
 if prompt := st.chat_input("Напишите ваш вопрос"):
