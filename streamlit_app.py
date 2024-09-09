@@ -11,11 +11,11 @@ def send_request(url, to_server):
     if response.status_code == 200:
       return response.json()
     else:
-      st.write(
+      st.text(
       f"Нет ответа от FastAPI сервера ({url}). Код статуса: {response.status_code}"
               )
   except Exception as e:
-    st.write(f"Произошла ошибка: {e}")
+    st.text(f"Произошла ошибка: {e}")
 
 st.subheader("Техническая поддержка X5", divider="green")
 
