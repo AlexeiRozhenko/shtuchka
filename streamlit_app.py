@@ -25,7 +25,6 @@ if "messages" not in st.session_state:
 
 # Выведение истории чата 
 for message in st.session_state.messages:
-  # if message.role == "assistant":
   with st.chat_message(message.role, avatar="🖥️"):
     st.markdown(message.content)
   # elif message.role == "user":
@@ -46,7 +45,6 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
 # Генерация ответа ассистента и получение ответа с FastAPI сервера
   with st.chat_message("assistant", avatar="🖥️"):
     with st.spinner("Обрабатываю ваш запрос..."):
-      data = prompt
-      server_answer = send_request(address, data)
+      server_answer = send_request(address, prompt)
       message_placeholder = st.empty()
       message_placeholder.markdown(f"Вот что я нашел по вашему запросу:\n{server_answer}")
