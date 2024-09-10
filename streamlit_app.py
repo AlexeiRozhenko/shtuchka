@@ -37,8 +37,8 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   with st.chat_message("user", avatar="🦖"):
     st.markdown(message.content)
 
-  message = ChatMessage(role="assistant", content="pass")
-  st.session_state["messages"].append(message)
+  # message = ChatMessage(role="assistant", content="pass")
+  # st.session_state["messages"].append(message)
 
 # Генерация ответа ассистента и получение ответа с FastAPI сервера
   with st.chat_message("assistant", avatar="🖥️"):
