@@ -46,7 +46,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
 # Генерация ответа ассистента и получение ответа с FastAPI сервера
   with st.chat_message("assistant", avatar="🖥️"):
     with st.spinner("Обрабатываю ваш запрос..."):
-      data = message.content
+      data = prompt
       server_answer = send_request(address, data)
       message_placeholder = st.empty()
       message_placeholder.markdown(f"Вот что я нашел по вашему запросу:\n{server_answer}")
