@@ -9,13 +9,13 @@ def send_request(url, to_server):
   try:
     response = requests.get(url, json=to_server)
     if response.status_code == 200:
-      return st.text(f"Вот что я нашел по вашему запросу: \n{response.json()}")
+      return {response.json()}
     else:
-      st.text(
+      st.markdown(
       f"Нет ответа от FastAPI сервера ({url}). Код статуса: {response.status_code}"
               )
   except Exception as e:
-    st.text(f"Произошла ошибка: {e}")
+    st.markdown(f"Произошла ошибка: {e}")
 
 st.subheader("Техническая поддержка X5", divider="green")
 
@@ -27,7 +27,7 @@ if "messages" not in st.session_state:
 for message in st.session_state.messages:
   if message.role == "assistant":
     with st.chat_message(message.role, avatar="🖥️"):
-      st.text(message.content)
+      st.markdown(message.content)
 
 # Инициализация окна ввода информации для пользователя
 if prompt := st.chat_input("Напишите ваш вопрос"):
@@ -35,7 +35,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   st.session_state["messages"].append(message)
 
   with st.chat_message("user", avatar="🦖"):
-    st.text(message.content)
+    st.markdown(message.content)
 
   message = ChatMessage(role="assistant", content="pass")
   st.session_state["messages"].append(message)
@@ -47,4 +47,4 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
       server_answer = send_request(address, data)
       # server_answer = "pass"
       message_placeholder = st.empty()
-      message_placeholder.text(f"{server_answer}")
+      message_placeholder.markdown(f"Вот что я нашел по вашему запросу:\n{server_answer}")
