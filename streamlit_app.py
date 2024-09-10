@@ -25,7 +25,7 @@ if "messages" not in st.session_state:
 
 # Выведение истории чата 
 for message in st.session_state.messages:
-  if message role == "user":
+  if message.role == "user":
     with st.chat_message(message.role, avatar="🦖"):
       st.markdown(message.content)
   else:
