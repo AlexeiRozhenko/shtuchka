@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 from langchain.schema import ChatMessage
 
-address = "http://95.182.121.46:8080/query?query=%D0%9A%D0%B0%D0%BA%20%D1%82%D0%B2%D0%BE%D0%B8%20%D0%B4%D0%B5%D0%BB%D0%B0"
+url = "http://95.182.121.46:8080/query?query=%D0%9A%D0%B0%D0%BA%20%D1%82%D0%B2%D0%BE%D0%B8%20%D0%B4%D0%B5%D0%BB%D0%B0"
 
 # Отправление запроса на FastAPI сервер
 def send_request(url, data):
@@ -25,7 +25,7 @@ if "messages" not in st.session_state:
 
 # Выведение истории чата 
 for message in st.session_state.messages:
-  with st.chat_message(message.role, avatar="🖥️"):
+  with st.chat_message(message.role):
     st.markdown(message.content)
   # elif message.role == "user":
   #   with st.chat_message(message.role, avatar="🦖"):
@@ -45,6 +45,6 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
 # Генерация ответа ассистента и получение ответа с FastAPI сервера
   with st.chat_message("assistant", avatar="🖥️"):
     with st.spinner("Обрабатываю ваш запрос..."):
-      server_answer = send_request(address, prompt)
+      server_answer = send_request(url, prompt)
       message_placeholder = st.empty()
       message_placeholder.markdown(f"Вот что я нашел по вашему запросу:\n{server_answer}")
