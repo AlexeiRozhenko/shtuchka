@@ -40,13 +40,13 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   with st.chat_message("user", avatar="🦖"):
     st.markdown(message.content)
 
-  message = ChatMessage(role="assistant", content=assistant_answer)
-  st.session_state["messages"].append(message)
-
 # Генерация ответа ассистента и получение ответа с FastAPI сервера
   with st.chat_message("assistant", avatar="🖥️"):
     with st.spinner("Обрабатываю ваш запрос..."):
       server_answer = send_request(url, prompt)
       assistant_answer = f"Вот что я нашел по вашему запросу:\n{server_answer}"
-      message_placeholder = st.empty()
-      message_placeholder.markdown(assistant_answer)
+      message = ChatMessage(role="assistant", content=assistant_answer)
+      st.session_state["messages"].append(message)
+      st.markdown(message.content)
+      # message_placeholder = st.empty()
+      # message_placeholder.markdown(assistant_answer)
