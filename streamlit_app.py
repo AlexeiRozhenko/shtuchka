@@ -48,5 +48,5 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
     with st.spinner("Обрабатываю ваш запрос..."):
       data = message.content
       server_answer = send_request(address, data)
-      # message_placeholder = st.empty()
+      message_placeholder = st.empty()
       message_placeholder.markdown(f"Вот что я нашел по вашему запросу:\n{server_answer}")
