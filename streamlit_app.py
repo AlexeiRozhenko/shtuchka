@@ -3,7 +3,7 @@ import requests
 from langchain.schema import ChatMessage
 
 url = "http://95.182.121.46:8080/query?query=%D0%9A%D0%B0%D0%BA%20%D1%82%D0%B2%D0%BE%D0%B8%20%D0%B4%D0%B5%D0%BB%D0%B0"
-st.set_page_config(page_title="Support Bot", page_icon="FIVE.ME-fb157f5c.png")
+st.set_page_config(page_title="X6 Bot", page_icon="🔍")
 
 # Отправление запроса на FastAPI сервер
 def send_request(url, data):
