@@ -25,11 +25,12 @@ if "messages" not in st.session_state:
 
 # Выведение истории чата 
 for message in st.session_state.messages:
-  with st.chat_message(message.role):
-    st.markdown(message.content)
-  # elif message.role == "user":
-  #   with st.chat_message(message.role, avatar="🦖"):
-  #     st.markdown(message.content)
+  if message role == "user":
+    with st.chat_message(message.role, avatar="🦖"):
+      st.markdown(message.content)
+  else:
+    with st.chat_message(message.role, avatar="🖥️"):
+      st.markdown(message.content)
 
 # Инициализация окна ввода информации для пользователя
 if prompt := st.chat_input("Напишите ваш вопрос"):
@@ -43,7 +44,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   st.session_state["messages"].append(message)
 
 # Генерация ответа ассистента и получение ответа с FastAPI сервера
-  with st.chat_message("assistant", avatar="🖥️"):
+  with st.chat_message("assistant"):
     with st.spinner("Обрабатываю ваш запрос..."):
       server_answer = send_request(url, prompt)
       message_placeholder = st.empty()
