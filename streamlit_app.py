@@ -45,7 +45,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   with st.chat_message("assistant", avatar="🖥️"):
     with st.spinner("Обрабатываю ваш запрос..."):
       server_answer = send_request(url, prompt)
-      assistant_answer = f"Вот что я нашел по вашему запросу:
+      assistant_answer = f"Вот что я нашел по вашему запросу: \
       {server_answer}"
       message = ChatMessage(role="assistant", content=assistant_answer)
       st.session_state["messages"].append(message)
