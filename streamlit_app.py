@@ -10,7 +10,7 @@ def send_request(url, data):
   try:
     response = requests.get(url, json=data)
     if response.status_code == 200:
-      return "".join(response.json()["response"])
+      return response.json()["response"]
     else:
       st.markdown(
       f"Нет ответа от FastAPI сервера ({url}). Код статуса: {response.status_code}"
