@@ -10,7 +10,7 @@ def send_request(url, data):
   try:
     response = requests.get(url, json=data)
     if response.status_code == 200:
-      return response.json()["response"]
+      return response.json()["response"].replace("[", "").replace("]", "").replace("'", "").
     else:
       st.markdown(
       f"Нет ответа от FastAPI сервера ({url}). Код статуса: {response.status_code}"
@@ -45,7 +45,8 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   with st.chat_message("assistant", avatar="🖥️"):
     with st.spinner("Обрабатываю ваш запрос..."):
       server_answer = send_request(url, prompt)
-      assistant_answer = f"Вот что я нашел по вашему запросу:\n{server_answer}"
+      assistant_answer = f"Вот что я нашел по вашему запросу:
+      {server_answer}"
       message = ChatMessage(role="assistant", content=assistant_answer)
       st.session_state["messages"].append(message)
       st.markdown(message.content)
