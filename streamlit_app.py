@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 from langchain.schema import ChatMessage
 
-url = "http://95.182.121.46:8080/docs#/default/proxy_query_query_get"
+url = "http://95.182.121.46:8080"
 st.set_page_config(page_title="X6 Bot", page_icon="🔍")
 
 # Отправление запроса на FastAPI сервер
