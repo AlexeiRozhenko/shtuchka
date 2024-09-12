@@ -14,7 +14,7 @@ def send_request(prompt):
       if answer == "поддержка":
         return "Прошу прощения, вы обошли искусственный интеллект 🥺. Перевожу вас на оператора"
       else:
-        return answer
+        return f"Вот что я нашел по вашему запросу:  \n{answer}"
       # return " ".join(map(str, answer))
     else:
       st.markdown(
@@ -50,7 +50,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
   with st.chat_message("assistant", avatar="🖥️"):
     with st.spinner("Обрабатываю ваш запрос..."):
       server_answer = send_request(prompt)
-      assistant_answer = f"Вот что я нашел по вашему запросу:  \n{server_answer}"
+      assistant_answer = f"{server_answer}"
       message = ChatMessage(role="assistant", content=assistant_answer)
       st.session_state["messages"].append(message)
       st.markdown(message.content)
