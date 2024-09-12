@@ -2,13 +2,13 @@ import streamlit as st
 import requests
 from langchain.schema import ChatMessage
 
-url = "http://95.182.121.46:8080/query"
 st.set_page_config(page_title="X6 Bot", page_icon="🔍")
 
 # Отправление запроса на FastAPI сервер
-def send_request(url, data):
+def send_request(prompt):
   try:
-    response = requests.get(url, json=data)
+    response = requests.get(f"http://95.182.121.46:8080/query?query={prompt}")
+    # response = requests.get(url, json=data)
     if response.status_code == 200:
       answer = response.json()["response"]
       if answer == "поддержка":
@@ -49,7 +49,7 @@ if prompt := st.chat_input("Напишите ваш вопрос"):
 # Генерация ответа ассистента и получение ответа с FastAPI сервера
   with st.chat_message("assistant", avatar="🖥️"):
     with st.spinner("Обрабатываю ваш запрос..."):
-      server_answer = send_request(url, prompt)
+      server_answer = send_request(prompt)
       assistant_answer = f"Вот что я нашел по вашему запросу:  \n{server_answer}"
       message = ChatMessage(role="assistant", content=assistant_answer)
       st.session_state["messages"].append(message)
