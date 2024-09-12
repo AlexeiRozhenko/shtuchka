@@ -11,8 +11,11 @@ def send_request(url, data):
     response = requests.get(url, json=data)
     if response.status_code == 200:
       answer = response.json()["response"]
+      if answer == "поддержка":
+        return "Прошу прощения, вы обошли искусственный интеллект 🥺. Перевожу вас на оператора"
+      else:
+        return answer
       # return " ".join(map(str, answer))
-      return answer
     else:
       st.markdown(
       f"Нет ответа от FastAPI сервера ({url}). Код статуса: {response.status_code}"
